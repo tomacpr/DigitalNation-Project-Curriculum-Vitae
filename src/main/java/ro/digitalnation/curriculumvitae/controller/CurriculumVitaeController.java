@@ -23,22 +23,6 @@ public class CurriculumVitaeController {
 
 	Date dNow = new Date();
 
-	public int calculateAge(LocalDate dateFrom, LocalDate dateTo) {
-		if ((dateFrom != null) && (dateTo != null)) {
-			return Period.between(dateFrom, dateTo).getYears();
-		} else {
-			return 0;
-		}
-	}
-	/*
-	 * private static final String template = "Hello, %s!"; private final AtomicLong
-	 * counter = new AtomicLong();
-	 * 
-	 * @GetMapping("/greeting") public Greeting greeting(@RequestParam(value =
-	 * "name", defaultValue = "World") String name) { return new
-	 * Greeting(counter.incrementAndGet(), String.format(template, name)); }
-	 */
-
 	@GetMapping("/personalInfo")
 	public PersonalInfo pInfo(@RequestParam(value = "name", defaultValue = "World") String name) {
 		return new PersonalInfo(name, "Ciprian", "Jr. Java Developer", "Lebedei nr 15, Brasov", 0747453555,

@@ -1,5 +1,7 @@
 package ro.digitalnation.curriculumvitae.clase;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 public class Experience {
