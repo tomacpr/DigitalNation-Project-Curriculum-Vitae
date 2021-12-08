@@ -1,18 +1,21 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PersonalInfo {
 
 	public String firstName, lastName, profession, address;
 	public int phone;
 	public String mail;
-	public Date dateOfBirth;
+	public LocalDate dateOfBirth;
 	public String linkedIn;
 
+	public PersonalInfo() {
+
+	}
+
 	public PersonalInfo(String firstName, String lastName, String profession, String address, int phone, String mail,
-			Date dateOfBirth, String linkedIn) {
-		super();
+			LocalDate dateOfBirth, String linkedIn) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.profession = profession;
@@ -71,11 +74,11 @@ public class PersonalInfo {
 		this.mail = mail;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

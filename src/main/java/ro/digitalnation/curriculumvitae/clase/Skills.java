@@ -1,14 +1,24 @@
 package ro.digitalnation.curriculumvitae.clase;
 
+import java.util.UUID;
+
 public class Skills {
 
+	public UUID id;
 	public String skill;
-	public double rating;
 
-	public Skills(String skill, double rating) {
-		super();
+	
+	public Skills(UUID id, String skill) {
+		this.id = id;
 		this.skill = skill;
-		this.rating = rating;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public String getSkill() {
@@ -19,17 +29,9 @@ public class Skills {
 		this.skill = skill;
 	}
 
-	public double getRating() {
-		return rating;
-	}
-
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
-
 	@Override
 	public String toString() {
-		return "Skills [skill=" + skill + ", rating=" + rating + "]";
+		return "Skills [id=" + id + ", skill=" + skill + "]";
 	}
 
 }

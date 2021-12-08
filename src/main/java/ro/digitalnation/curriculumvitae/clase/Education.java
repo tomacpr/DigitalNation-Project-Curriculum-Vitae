@@ -1,14 +1,14 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Education {
-
+	
 	public String schoolName;
-	public Date dateFrom, dateTo;
+	public LocalDate dateFrom, dateTo;
 	public String description;
 
-	public Education(String schoolName, Date dateFrom, Date dateTo, String description) {
+	public Education(String schoolName, LocalDate dateFrom, LocalDate dateTo, String description) {
 		super();
 		this.schoolName = schoolName;
 		this.dateFrom = dateFrom;
@@ -24,19 +24,19 @@ public class Education {
 		this.schoolName = schoolName;
 	}
 
-	public Date getDateFrom() {
+	public LocalDate getDateFrom() {
 		return dateFrom;
 	}
 
-	public void setDateFrom(Date dateFrom) {
+	public void setDateFrom(LocalDate dateFrom) {
 		this.dateFrom = dateFrom;
 	}
 
-	public Date getDateTo() {
+	public LocalDate getDateTo() {
 		return dateTo;
 	}
 
-	public void setDateTo(Date dateTo) {
+	public void setDateTo(LocalDate dateTo) {
 		this.dateTo = dateTo;
 	}
 

@@ -1,18 +1,31 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Certification {
 
+	public int id;
 	public String organization;
 	public String competence;
-	public Date dateOfAward;
+	public LocalDate dateOfAward;
 
-	public Certification(String competence, String organization, Date dateOfAward) {
-		super();
+	public Certification() {
+
+	}
+
+	public Certification(int id, String organization, String competence, LocalDate dateOfAward) {
+		this.id = id;
 		this.organization = organization;
 		this.competence = competence;
 		this.dateOfAward = dateOfAward;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getOrganization() {
@@ -31,18 +44,18 @@ public class Certification {
 		this.competence = competence;
 	}
 
-	public Date getDateOfAward() {
+	public LocalDate getDateOfAward() {
 		return dateOfAward;
 	}
 
-	public void setDateOfAward(Date dateOfAward) {
+	public void setDateOfAward(LocalDate dateOfAward) {
 		this.dateOfAward = dateOfAward;
 	}
 
 	@Override
 	public String toString() {
-		return "Certification [organization=" + organization + ", competence=" + competence + ", dateOfAward="
-				+ dateOfAward + "]";
+		return "Certification [id=" + id + ", organization=" + organization + ", competence=" + competence
+				+ ", dateOfAward=" + dateOfAward + "]";
 	}
 
 }

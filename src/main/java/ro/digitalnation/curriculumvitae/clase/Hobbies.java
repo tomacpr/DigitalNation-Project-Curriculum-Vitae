@@ -1,34 +1,23 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-public class Hobbies {
-	public String hobby;
-	public double rating;
+import java.util.UUID;
 
-	public Hobbies(String hobby, double rating) {
-		super();
+public class Hobbies {
+
+	private final UUID id;
+	private final String hobby;
+
+	public Hobbies(UUID id, String hobby) {
+		this.id = id;
 		this.hobby = hobby;
-		this.rating = rating;
+	}
+
+	public UUID getId() {
+		return id;
 	}
 
 	public String getHobby() {
 		return hobby;
-	}
-
-	public void setHobby(String hobby) {
-		this.hobby = hobby;
-	}
-
-	public double getRating() {
-		return rating;
-	}
-
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
-
-	@Override
-	public String toString() {
-		return "Hobbies [hobby=" + hobby + ", rating=" + rating + "]";
 	}
 
 }

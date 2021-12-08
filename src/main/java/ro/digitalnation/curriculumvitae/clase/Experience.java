@@ -1,22 +1,30 @@
 package ro.digitalnation.curriculumvitae.clase;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.Date;
 
 public class Experience {
 
+	public int id;
 	public String position, comapany;
-	public Date dateFrom, dateTo;
+	public LocalDate dateFrom, dateTo;
 	public String description;
 
-	public Experience(String position, String comapany, Date dateFrom, Date dateTo, String description) {
+	public Experience(int id, String position, String comapany, LocalDate dateFrom, LocalDate dateTo, String description) {
 		super();
+		this.id = id;
 		this.position = position;
 		this.comapany = comapany;
 		this.dateFrom = dateFrom;
 		this.dateTo = dateTo;
 		this.description = description;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPosition() {
@@ -35,19 +43,19 @@ public class Experience {
 		this.comapany = comapany;
 	}
 
-	public Date getDateFrom() {
+	public LocalDate getDateFrom() {
 		return dateFrom;
 	}
 
-	public void setDateFrom(Date dateFrom) {
+	public void setDateFrom(LocalDate dateFrom) {
 		this.dateFrom = dateFrom;
 	}
 
-	public Date getDateTo() {
+	public LocalDate getDateTo() {
 		return dateTo;
 	}
 
-	public void setDateTo(Date dateTo) {
+	public void setDateTo(LocalDate dateTo) {
 		this.dateTo = dateTo;
 	}
 
@@ -58,11 +66,13 @@ public class Experience {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Experience [position=" + position + ", comapany=" + comapany + ", dateFrom=" + dateFrom + ", dateTo="
-				+ dateTo + ", description=" + description + "]";
+		return "Experience [id=" + id + ", position=" + position + ", comapany=" + comapany + ", dateFrom=" + dateFrom
+				+ ", dateTo=" + dateTo + ", description=" + description + "]";
 	}
+
+	
 
 }
