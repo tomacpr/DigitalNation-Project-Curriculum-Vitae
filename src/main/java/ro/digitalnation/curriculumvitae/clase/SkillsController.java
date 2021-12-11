@@ -1,9 +1,8 @@
 package ro.digitalnation.curriculumvitae.clase;
 
 import java.util.List;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,19 +21,24 @@ public class SkillsController {
 		this.skillsService = skillsService;
 	}
 
-	@PostMapping
-	public void addSkills(@RequestBody Skills skills) {
-		skillsService.addSkills(skills);
-	}
-	
 	@GetMapping
 	public List<Skills> getSkills() {
 		return skillsService.getSkills();
 	}
-	
+
 	@GetMapping(path = "{id}")
-	public Skills getSkillsById(@PathVariable("id") UUID id) {
-		return skillsService.getSkillsById(id)
-				.orElse(null);
+	public Skills getSkillsById(@PathVariable("id") Long id) {
+		return skillsService.getSkillsById(id).orElse(null);
 	}
+
+	@PostMapping
+	public void registerNewSkills(@RequestBody Skills skills) {
+		skillsService.addNewSkills(skills);
+	}
+
+	@DeleteMapping(path = "{skillsId}")
+	public void deleteSkills(@PathVariable("skillsId") Long skillsId) {
+		skillsService.deleteSkills(skillsId);
+	}
+
 }

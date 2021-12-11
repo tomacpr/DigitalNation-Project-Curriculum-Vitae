@@ -1,39 +1,48 @@
 package ro.digitalnation.curriculumvitae.clase;
 
 import java.time.LocalDate;
+import java.time.Period;
 
+import javax.persistence.*;
+
+@Entity(name = "Certification")
+@Table
 public class Certification {
 
-	public int id;
-	public String organization;
+	@Id
+	@SequenceGenerator(name = "certification_sequence", sequenceName = "certification_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "certification_sequence")
+	@Column(name = "Identification", updatable = false)
+	public Long id;
+
+	@Column(name = "Competence", nullable = false, columnDefinition = "TEXT")
 	public String competence;
-	public LocalDate dateOfAward;
+
+	@Column(name = "Organization", nullable = false, columnDefinition = "TEXT")
+	public String organization;
+
+	@Column(name = "Attained", nullable = false, columnDefinition = "DATE")
+	public LocalDate attainedDate;
+
+	@Transient
+	public Integer time;
 
 	public Certification() {
 
 	}
 
-	public Certification(int id, String organization, String competence, LocalDate dateOfAward) {
-		this.id = id;
-		this.organization = organization;
+	public Certification(String competence, String organization, LocalDate attainedDate) {
 		this.competence = competence;
-		this.dateOfAward = dateOfAward;
+		this.organization = organization;
+		this.attainedDate = attainedDate;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getOrganization() {
-		return organization;
-	}
-
-	public void setOrganization(String organization) {
-		this.organization = organization;
 	}
 
 	public String getCompetence() {
@@ -44,18 +53,34 @@ public class Certification {
 		this.competence = competence;
 	}
 
-	public LocalDate getDateOfAward() {
-		return dateOfAward;
+	public String getOrganization() {
+		return organization;
 	}
 
-	public void setDateOfAward(LocalDate dateOfAward) {
-		this.dateOfAward = dateOfAward;
+	public void setOrganization(String organization) {
+		this.organization = organization;
+	}
+
+	public LocalDate getAttainedDate() {
+		return attainedDate;
+	}
+
+	public void setAttainedDate(LocalDate attainedDate) {
+		this.attainedDate = attainedDate;
+	}
+
+	public Integer getTime() {
+		return Period.between(this.attainedDate, LocalDate.now()).getYears();
+	}
+
+	public void setTime(Integer time) {
+		this.time = time;
 	}
 
 	@Override
 	public String toString() {
-		return "Certification [id=" + id + ", organization=" + organization + ", competence=" + competence
-				+ ", dateOfAward=" + dateOfAward + "]";
+		return "Certification [id=" + id + ", competence=" + competence + ", organization=" + organization
+				+ ", attainedDate=" + attainedDate + "]";
 	}
 
 }

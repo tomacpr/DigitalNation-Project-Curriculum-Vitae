@@ -4,7 +4,10 @@ import java.time.LocalDate;
 
 public class PersonalInfo {
 
-	public String firstName, lastName, profession, address;
+	public String firstName;
+	public String lastName;
+	public String profession;
+	public String address;
 	public int phone;
 	public String mail;
 	public LocalDate dateOfBirth;

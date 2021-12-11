@@ -1,29 +1,60 @@
 package ro.digitalnation.curriculumvitae.clase;
 
 import java.time.LocalDate;
+import java.time.Period;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
+@Entity(name = "Experience")
+@Table
 public class Experience {
 
-	public int id;
-	public String position, comapany;
-	public LocalDate dateFrom, dateTo;
+	@Id
+	@SequenceGenerator(name = "experience_sequence", sequenceName = "experience_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "experience_sequence")
+	@Column(name = "Identification", updatable = false)
+	public Long id;
+
+	@Column(name = "Position", updatable = false)
+	public String position;
+
+	@Column(name = "Company", updatable = false)
+	public String company;
+
+	@Column(name = "Job_Description", updatable = false)
 	public String description;
 
-	public Experience(int id, String position, String comapany, LocalDate dateFrom, LocalDate dateTo, String description) {
-		super();
-		this.id = id;
+	@Column(name = "Date_From", updatable = false)
+	public LocalDate dateFrom;
+
+	@Column(name = "Date_To", updatable = false)
+	public LocalDate dateTo;
+
+	@Transient
+	public Integer time;
+
+	public Experience() {
+	}
+
+	public Experience(String position, String company, LocalDate dateFrom, LocalDate dateTo, String description) {
 		this.position = position;
-		this.comapany = comapany;
+		this.company = company;
 		this.dateFrom = dateFrom;
 		this.dateTo = dateTo;
 		this.description = description;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -35,12 +66,12 @@ public class Experience {
 		this.position = position;
 	}
 
-	public String getComapany() {
-		return comapany;
+	public String getCompany() {
+		return company;
 	}
 
-	public void setComapany(String comapany) {
-		this.comapany = comapany;
+	public void setCompany(String comapany) {
+		this.company = comapany;
 	}
 
 	public LocalDate getDateFrom() {
@@ -66,13 +97,20 @@ public class Experience {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	@Override
-	public String toString() {
-		return "Experience [id=" + id + ", position=" + position + ", comapany=" + comapany + ", dateFrom=" + dateFrom
-				+ ", dateTo=" + dateTo + ", description=" + description + "]";
+
+	public String getTime() {
+		Period period = Period.between(this.dateFrom, this.dateTo);
+		return period.getYears() + " years and " + period.getMonths() + " months";
 	}
 
-	
+	public void setTime(Integer time) {
+		this.time = time;
+	}
+
+	@Override
+	public String toString() {
+		return "Experience [id=" + id + ", position=" + position + ", comapany=" + company + ", dateFrom=" + dateFrom
+				+ ", dateTo=" + dateTo + ", description=" + description + "]";
+	}
 
 }

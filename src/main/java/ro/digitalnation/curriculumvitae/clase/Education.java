@@ -2,17 +2,31 @@ package ro.digitalnation.curriculumvitae.clase;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "Education")
+@Table
 public class Education {
-	
+
+	@Id
+	@Column(name = "Year", updatable = false)
+	public LocalDate dateFrom;
+
+	@Column(name = "SchoolName", nullable = false, columnDefinition = "TEXT")
 	public String schoolName;
-	public LocalDate dateFrom, dateTo;
+
+	@Column(name = "Profile", nullable = false, columnDefinition = "TEXT")
 	public String description;
 
-	public Education(String schoolName, LocalDate dateFrom, LocalDate dateTo, String description) {
-		super();
+	public Education() {
+	}
+
+	public Education(LocalDate dateFrom, String schoolName, String description) {
 		this.schoolName = schoolName;
 		this.dateFrom = dateFrom;
-		this.dateTo = dateTo;
 		this.description = description;
 	}
 
@@ -32,14 +46,6 @@ public class Education {
 		this.dateFrom = dateFrom;
 	}
 
-	public LocalDate getDateTo() {
-		return dateTo;
-	}
-
-	public void setDateTo(LocalDate dateTo) {
-		this.dateTo = dateTo;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -50,8 +56,7 @@ public class Education {
 
 	@Override
 	public String toString() {
-		return "Education [schoolName=" + schoolName + ", dateFrom=" + dateFrom + ", dateTo=" + dateTo
-				+ ", description=" + description + "]";
+		return "Education [schoolName=" + schoolName + ", dateFrom=" + dateFrom + ", description=" + description + "]";
 	}
 
 }

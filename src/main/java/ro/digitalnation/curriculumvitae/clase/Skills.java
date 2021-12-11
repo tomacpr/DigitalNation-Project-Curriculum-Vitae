@@ -1,23 +1,36 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
+@Entity
 public class Skills {
 
-	public UUID id;
-	public String skill;
+	@Id
+	@SequenceGenerator(name = "skills_sequence", sequenceName = "skills_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "skills_sequence")
+	@Column(name = "Identification", updatable = false)
+	private Long id;
 
-	
-	public Skills(UUID id, String skill) {
-		this.id = id;
+	@Column(name = "Skills", nullable = false, columnDefinition = "TEXT")
+	private String skill;
+
+	public Skills() {
+	}
+
+	public Skills(String skill) {
 		this.skill = skill;
 	}
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

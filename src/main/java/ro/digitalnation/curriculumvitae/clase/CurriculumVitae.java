@@ -8,7 +8,7 @@ public class CurriculumVitae {
 	public int phone;
 	public Date dateOfBirth;
 	public String summary, experience, education, skills, hobbies;
-	
+
 	public CurriculumVitae(String firstName, String lastName, String profession, String address, int phone,
 			Date dateOfBirth, String summary, String experience, String education, String skills, String hobbies) {
 		super();
@@ -119,10 +119,6 @@ public class CurriculumVitae {
 				+ ", address=" + address + ", phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", summary=" + summary
 				+ ", experience=" + experience + ", education=" + education + ", skills=" + skills + ", hobbies="
 				+ hobbies + "]";
-	} 
-	
-	
+	}
 
-	
-	
 }
