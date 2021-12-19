@@ -2,16 +2,18 @@ package ro.digitalnation.curriculumvitae.clase;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HobbiesService {
+public class HobbiesService implements HobbiesServ {
 
 	private final HobbiesRepository hobbiesRepository;
 
 	@Autowired
 	public HobbiesService(HobbiesRepository hobbiesRepository) {
+		super();
 		this.hobbiesRepository = hobbiesRepository;
 	}
 
@@ -19,29 +21,42 @@ public class HobbiesService {
 		return hobbiesRepository.findAll();
 	}
 
+	public void addNewHobbies(Hobbies addHobbies) {
+		System.out.println("Added new hobbie " + addHobbies + " !");
+		Optional<Hobbies> hobbiesOptional = hobbiesRepository.findHobbiesByHobby(addHobbies.getHobby());
+		if (hobbiesOptional.isPresent()) {
+			throw new IllegalStateException("Hobby already exist !");
+		}
+		hobbiesRepository.save(addHobbies);
+	}
+
+	public void deleteHobbies(Long hobbyId) {
+		System.out.println("Deleted hobby with id number " + hobbyId + " !");
+		boolean exists = hobbiesRepository.existsById(hobbyId);
+		if (!exists) {
+			throw new IllegalStateException("Hobbie with id " + hobbyId + " does not exists !");
+		}
+		hobbiesRepository.deleteById(hobbyId);
+	}
+
 	public Optional<Hobbies> getHobbiesById(Long id) {
 		boolean exists = hobbiesRepository.existsById(id);
 		if (!exists) {
-			throw new IllegalStateException("hobby with id " + id + " does not exists");
+			throw new IllegalStateException("Hobby with id " + id + " does not exists !");
 		}
 		return hobbiesRepository.findById(id);
 	}
 
-	public void addNewHobbies(Hobbies hobbies) {
-		System.out.println(hobbies);
-		Optional<Hobbies> hobbiesOptional = hobbiesRepository.findHobbiesByHobby(hobbies.getHobby());
-		if (hobbiesOptional.isPresent()) {
-			throw new IllegalStateException("hobby already exist");
+	@Override
+	public Hobbies getHobbiesById(long id) {
+		Optional<Hobbies> optional = hobbiesRepository.findById(id);
+		Hobbies hobby = null;
+		if (optional.isPresent()) {
+			hobby = optional.get();
+		} else {
+			throw new RuntimeException("Hobby not found for id : " + id + ".");
 		}
-		hobbiesRepository.save(hobbies);
-	}
-
-	public void deleteHobbies(Long hobbiesId) {
-		boolean exists = hobbiesRepository.existsById(hobbiesId);
-		if (!exists) {
-			throw new IllegalStateException("hobby with id " + hobbiesId + " does not exists");
-		}
-		hobbiesRepository.deleteById(hobbiesId);
+		return hobby;
 	}
 
 }

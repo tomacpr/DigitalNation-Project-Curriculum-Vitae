@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name = "Education")
-@Table
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name = "Education")
 public class Education {
 
 	@Id
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Year", updatable = false)
 	public LocalDate dateFrom;
 

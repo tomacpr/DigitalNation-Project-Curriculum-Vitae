@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Proiect Individual - Add Certification</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="header">
+		<div class="subheader">
+			<h1>Digital Nation - JAVA - proiect individual</h1>
+			<div id="navigation">
+				<div id="nav">
+					<ul>
+						<li class="fleft"><a th:href="@{home}">Home</a></li>
+						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
+						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
+						<li class="fleft"><a th:href="@{education}">Education</a></li>
+						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
+						<li class="fleft"><a th:href="@{skills}">Skills</a></li>
+						<li class="fleft active"><a th:href="@{certification}">Certification</a></li>
+						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
+						<li class="fleft"><a th:href="@{profile}">Profile</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="container">
+		<div id="maincolumn">
+			<div class="fblock">
+				<div class="fblock-header"><h4>Add Certification</h4></div>
+				<div class="clearfix"></div>
+				<div class="fblock-content">
+				<div class="fblock-innercontent">
+				<div class="colhead" style="padding: 10px;">
+					<form th:action="@{/certification/add}" th:object = "${newCertification}" method="POST">
+						<div>
+							<label> Certificate: </label>
+							<input type="text" th:field="*{competence}" placeholder="..."> 
+							<label> Organization: </label>
+							<input type="text" th:field="*{organization}" placeholder="...">
+							<label> Attained date: </label>
+							<input type="date" th:field="*{attainedDate}" placeholder="...">
+						</div>
+						<div class = "box-footer">
+							<button type="submit" class = "sbtn"> Add Certificate </button>
+						</div>
+					</form>
+				</div>
+				</div>
+				</div>
+				<div class="fblock-bottom"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="footer">
+		<div id="footerInner">
+			<div class="boxFooter">
+				<h2>&nbsp;&nbsp;Toma Ciprian</h2>
+				<ul><span style="position: relative;bottom: 8px;"><a href="" title="Home">December 2021</a></span></ul>
+			</div>
+
+			<div style="float: right;">
+				<font class="small"><b><a href="#top" class="gototop" title="Go To Top">To Top</a></font></b>
+			</div>
+		</div>
+        </div>
+
+</body>
+</html>

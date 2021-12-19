@@ -1,44 +1,59 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping(path = "/hobbies")
+@Controller
 public class HobbiesController {
 
-	private final HobbiesService hobbiesService;
+	private HobbiesService hobbiesService;
 
 	@Autowired
 	public HobbiesController(HobbiesService hobbiesService) {
+		super();
 		this.hobbiesService = hobbiesService;
 	}
 
-	@GetMapping
-	public List<Hobbies> getHobbies() {
-		return hobbiesService.getHobbies();
+	// TABLE
+	@GetMapping("/hobbies")
+	public String getHobbies(Model model) {
+		model.addAttribute("listHobbies", hobbiesService.getHobbies());
+		return "hobbies";
 	}
 
-	@GetMapping(path = "{id}")
-	public Hobbies getHobbiesById(@PathVariable("id") Long id) {
-		return hobbiesService.getHobbiesById(id).orElse(null);
+	// ADD TEMPLATE
+	@GetMapping("/hobbies/new")
+	public String createHobbyForm(Model model) {
+		Hobbies newHobby = new Hobbies();
+		model.addAttribute("newHobby", newHobby);
+		return "addHobby";
 	}
 
-	@PostMapping
-	public void registerNewHobbies(@RequestBody Hobbies hobbies) {
-		hobbiesService.addNewHobbies(hobbies);
+	// ADD
+	@PostMapping("/hobbies/add")
+	public String registerNewHobbies(@ModelAttribute("addHobby") Hobbies addHobby) {
+		hobbiesService.addNewHobbies(addHobby);
+		return "redirect:/hobbies";
 	}
 
-	@DeleteMapping(path = "{hobbiesId}")
-	public void deleteCertification(@PathVariable("hobbiesId") Long hobbiesId) {
-		hobbiesService.deleteHobbies(hobbiesId);
+	// UPDATE
+	/*@GetMapping("/hobbies/update/{id}")
+	public String updateHobbies(@PathVariable(value = "id") long id, Model model) {
+		Hobbies showHobby = hobbiesService.getHobbiesById(id);
+		model.addAttribute("updateHobby", showHobby);
+		return "updateHobby";
+	}*/
+
+	// DELETE
+	@GetMapping("/hobbies/delete/{id}")
+	public String deleteHobbyFromTable(@PathVariable("id") Long hobbyId) {
+		hobbiesService.deleteHobbies(hobbyId);
+		return "redirect:/hobbies";
 	}
 
 }

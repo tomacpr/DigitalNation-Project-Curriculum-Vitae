@@ -1,12 +1,11 @@
 package ro.digitalnation.curriculumvitae.clase;
 
 import java.time.LocalDate;
-import java.time.Period;
-
 import javax.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity(name = "Certification")
-@Table
+@Entity
+@Table(name = "Certification")
 public class Certification {
 
 	@Id
@@ -21,11 +20,9 @@ public class Certification {
 	@Column(name = "Organization", nullable = false, columnDefinition = "TEXT")
 	public String organization;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Attained", nullable = false, columnDefinition = "DATE")
 	public LocalDate attainedDate;
-
-	@Transient
-	public Integer time;
 
 	public Certification() {
 
@@ -69,18 +66,9 @@ public class Certification {
 		this.attainedDate = attainedDate;
 	}
 
-	public Integer getTime() {
-		return Period.between(this.attainedDate, LocalDate.now()).getYears();
-	}
-
-	public void setTime(Integer time) {
-		this.time = time;
-	}
-
 	@Override
 	public String toString() {
-		return "Certification [id=" + id + ", competence=" + competence + ", organization=" + organization
-				+ ", attainedDate=" + attainedDate + "]";
+		return "[competence=" + competence + ", organization=" + organization + ", attainedDate=" + attainedDate + "]";
 	}
 
 }

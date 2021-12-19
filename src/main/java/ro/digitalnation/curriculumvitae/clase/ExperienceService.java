@@ -1,30 +1,45 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExperienceService {
+public class ExperienceService implements ExperienceServ {
 
 	private final ExperienceRepository experienceRepository;
 
 	@Autowired
 	public ExperienceService(ExperienceRepository experienceRepository) {
+		super();
 		this.experienceRepository = experienceRepository;
 	}
 
 	public List<Experience> getExperience() {
 		return experienceRepository.findAll();
 	}
-
-	public Optional<Experience> getExperienceById(Long id) {
+	
+	public void addNewExperience(Experience addExperience) {
+		System.out.println("Added new experince " + addExperience + " !");
+		Optional<Experience> experinceOptional = experienceRepository.findExperienceByPosition(addExperience.getPosition());
+		if (experinceOptional.isPresent()) {
+			throw new IllegalStateException("Experience already exist !");
+		}
+		experienceRepository.save(addExperience);
+	}
+	
+	public void deleteExperience(Long experienceId) {
+		System.out.println("Deleted experince with id number " + experienceId + " !");
+		boolean exists = experienceRepository.existsById(experienceId);
+		if (!exists) {
+			throw new IllegalStateException("Experince with id " + experienceId + " does not exists");
+		}
+		experienceRepository.deleteById(experienceId);
+	}
+	
+	public Optional<Experience> getExperiencesById(Long id) {
 		boolean exists = experienceRepository.existsById(id);
 		if (!exists) {
 			throw new IllegalStateException("Experience with id " + id + " does not exists");
@@ -32,20 +47,20 @@ public class ExperienceService {
 		return experienceRepository.findById(id);
 	}
 
-	public void addNewExperience(Experience experience) {
-		System.out.println(experience);
-		experienceRepository.save(experience);
-	}
-
-	public void deleteExperience(Long experienceId) {
-		boolean exists = experienceRepository.existsById(experienceId);
-		if (!exists) {
-			throw new IllegalStateException("Experince with id " + experienceId + " does not exists");
+	@Override
+	public Experience getExperienceById(long id) {
+		Optional<Experience> optional = experienceRepository.findById(id);
+		Experience experience = null;
+		if (optional.isPresent()) {
+			experience = optional.get();
+		} else {
+			throw new RuntimeException("Experience not found for id : " + id);
 		}
-		experienceRepository.deleteById(experienceId);
+		return experience;
 	}
+	
 
-	@Transactional
+	/*@Transactional
 	public void updateExperience(Long experienceId, String position, String company, String description,
 			LocalDate dateFrom, LocalDate dateTo) {
 		Experience experience = experienceRepository.findById(experienceId)
@@ -66,7 +81,6 @@ public class ExperienceService {
 		if (dateTo != null && dateTo.lengthOfYear() > 0 && !Objects.equals(experience.getDateFrom(), dateTo)) {
 			experience.setDateFrom(null);
 		}
-
-	}
+	}*/
 
 }

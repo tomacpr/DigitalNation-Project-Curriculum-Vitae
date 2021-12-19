@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Proiect Individual - Profile</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="header">
+		<div class="subheader">
+			<h1>Digital Nation - JAVA - proiect individual</h1>
+			<div id="navigation">
+				<div id="nav">
+					<ul>
+						<li class="fleft"><a th:href="@{home}">Home</a></li>
+						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
+						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
+						<li class="fleft"><a th:href="@{education}">Education</a></li>
+						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
+						<li class="fleft"><a th:href="@{skills}">Skills</a></li>
+						<li class="fleft"><a th:href="@{certification}">Certification</a></li>
+						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
+						<li class="fleft active"><a th:href="@{profile}">Profile</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="container">
+		<div id="maincolumn">
+			<div class="fblock">
+				<div class="fblock-header"><h4>Update Profile</h4></div>
+				<div class="clearfix"></div>
+				<div class="fblock-content">
+				<div class="fblock-innercontent">
+				<div class="colhead" style="padding: 10px;">
+					<form th:action="@{/profile/add}" th:object = "${updateProfile}" method="POST">
+						<div class ="form-group">
+							<textarea required th:field="*{profile}" rows="10"></textarea>
+						</div>
+						<div class = "box-footer">
+							<button type="submit" class="sbtn">Update</button>
+						</div>
+					</form>
+						<a th:href="@{/profile}" class="ar"> Back to Profile</a>
+				</div>
+				</div>
+				</div>
+				<div class="fblock-bottom"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="footer">
+		<div id="footerInner">
+			<div class="boxFooter">
+				<h2>&nbsp;&nbsp;Toma Ciprian</h2>
+				<ul><span style="position: relative; bottom: 8px;"><a href="" title="Home">December 2021</a></span></ul>
+			</div>
+
+			<div style="float: right;">
+				<font class="small"><b><a href="#top" class="gototop" title="Go To Top">To Top</a></b></font>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

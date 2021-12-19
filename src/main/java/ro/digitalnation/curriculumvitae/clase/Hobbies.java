@@ -8,37 +8,48 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity(name = "Hobbies")
-@Table
+@Entity
+@Table(name = "Hobbies")
 public class Hobbies {
-
+	
 	@Id
-	@SequenceGenerator(name = "hobbie_sequence", sequenceName = "hobbie_sequence", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hobbie_sequence")
+	@SequenceGenerator(name = "hobbies_sequence", sequenceName = "hobbies_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hobbies_sequence")
 	@Column(name = "Identification", updatable = false)
-	private Long id;
+	public long id;
 
-	@Column(name = "Hobby", updatable = false)
-	private String hobby;
+	@Column(name = "Hobby", nullable = false, columnDefinition = "TEXT")
+	public String hobby;
 
 	public Hobbies() {
+		super();
 	}
 
 	public Hobbies(String hobby) {
+		super();
 		this.hobby = hobby;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getHobby() {
 		return hobby;
 	}
 
-	@Override
-	public String toString() {
-		return "Hobbies [id=" + id + ", hobby=" + hobby + "]";
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
 	}
 
+	@Override
+	public String toString() {
+		return "[hobby=" + hobby + "]";
+	}
+
+	
 }

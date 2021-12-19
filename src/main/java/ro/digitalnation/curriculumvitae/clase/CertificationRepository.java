@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface CertificationRepository extends JpaRepository<Certification, Long> {
 
 	@Query("SELECT s FROM Certification s WHERE s.organization = ?1")
-	Optional<Certification> findCertificationByOrganization(String organization);
+	Optional<Certification> findCertificationByCompetence(String competence);
+
 }

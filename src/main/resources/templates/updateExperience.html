@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Skill - Curriculum Vitae</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="header">
+		<div class="subheader">
+			<h1>Digital Nation - JAVA - proiect individual</h1>
+			<div id="navigation">
+				<div id="nav">
+					<ul>
+						<li class="fleft"><a th:href="@{home}">Home</a></li>
+						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
+						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
+						<li class="fleft"><a th:href="@{education}">Education</a></li>
+						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
+						<li class="fleft active"><a th:href="@{/skills}">Skills</a></li>
+						<li class="fleft"><a th:href="@{certification}">Certification</a></li>
+						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
+						<li class="fleft"><a th:href="@{profile}">Profile</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="container">
+		<div id="maincolumn">
+			<div class="fblock">
+				<div class="fblock-header"><h4>Add Skill</h4></div>
+				<div class="clearfix"></div>
+				<div class="fblock-content">
+				<div class="fblock-innercontent">
+				<div class="colhead" style="padding: 10px;">
+					<form th:action="@{/experience/add}" th:object = "${updateExperience}" method="POST">
+						<div class ="form-group">
+							<input type="hidden" th:field="*{id}" />
+							<label> Position: </label><br>
+							<input type="text" th:field="*{position}" >
+							<label> Company: </label><br>
+							<input type="text" th:field="*{company}" >
+							<label> Date from: </label><br>
+							<input type="date" th:field="*{dateFrom}" >
+							<label> Date to: </label><br>
+							<input type="date" th:field="*{dateTo}" >
+							<label> Job description: </label><br>
+							<textarea required th:field="*{description}" rows="5"></textarea>
+						</div>			
+						<div class = "box-footer">
+							<button type="submit" class="sbtn">Update</button>
+						</div>
+					</form>
+						<a th:href="@{/experience}" class="ar"> Back to Experiences List</a>
+				</div>
+				</div>
+				</div>
+				<div class="fblock-bottom"></div>
+			</div>
+		</div>
+	</div>
+		
+	<div id="footer">
+		<div id="footerInner">
+			<div class="boxFooter">
+				<h2>&nbsp;&nbsp;Toma Ciprian</h2>
+				<ul><span style="position: relative; bottom: 8px;"><a href="" title="Home">December 2021</a></span></ul>
+			</div>
+
+			<div style="float: right;">
+				<font class="small"><b><a href="#top" class="gototop" title="Go To Top">To Top</a></b></font>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Proiect Individual - Experience</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="header">
+		<div class="subheader">
+			<h1>Digital Nation - JAVA - proiect individual</h1>
+			<div id="navigation">
+				<div id="nav">
+					<ul>
+						<li class="fleft"><a th:href="@{home}">Home</a></li>
+						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
+						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
+						<li class="fleft"><a th:href="@{education}">Education</a></li>
+						<li class="fleft active"><a th:href="@{experience}">Experience</a></li>
+						<li class="fleft"><a th:href="@{skills}">Skills</a></li>
+						<li class="fleft"><a th:href="@{certification}">Certification</a></li>
+						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
+						<li class="fleft"><a th:href="@{profile}">Profile</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="container">
+		<div id="maincolumn">
+			<div style="float: right;">
+				<div class="oblock">
+					<div class="oblock-header"><h4>Professional Experience</h4></div>
+					<div class="clearfix"></div>
+						<div class="oblock-content">
+						<div class="oblock-innercontent">
+							<div class="colhead" style="padding: 10px;">
+							<b><a th:href="@{/experience/new}" class = "addbtn">Add experience</a></b><br><br>
+								<table >
+									<thead >
+										<tr>
+											<th style="width:2%"> No. </th>
+											<th> Position </th>
+											<th> Company </th>
+											<th style="width:35%"> Description </th>
+											<th> Date From</th>
+											<th> Date To</th>
+											<th> Period</th>
+											<th style="width:6%"> Actions </th>
+										</tr>
+									</thead>
+			
+									<tbody>
+										<tr th:each="experience :${listExperience}">
+											<td th:text="${experience.id}"></td>
+											<td th:text="${experience.position}"></td>
+											<td th:text="${experience.company}"></td>
+											<td th:text="${experience.description}"></td>
+											<td th:text="${experience.dateFrom}"></td>
+											<td th:text="${experience.dateTo}"></td>
+											<td th:text="${experience.time}"></td>
+											<td><a th:href="@{/experience/update/{id}(id=${experience.id})}" class="update">Update</a>
+											 <a th:href="@{/experience/delete/{id}(id=${experience.id})}" class="delete">Delete</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						</div>
+					<div class="oblock-bottom"></div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div id="footer">
+		<div id="footerInner">
+			<div class="boxFooter">
+				<h2>&nbsp;&nbsp;Toma Ciprian</h2>
+				<ul><span style="position: relative;bottom: 8px;"><a href="" title="Home">December 2021</a></span></ul>
+			</div>
+
+			<div style="float: right;">
+				<font class="small"><b><a href="#top" class="gototop" title="Go To Top">To Top</a></font></b>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

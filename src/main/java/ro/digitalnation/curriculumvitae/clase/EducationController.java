@@ -1,25 +1,26 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping(path = "/education")
+@Controller
 public class EducationController {
 
 	private final EducationService educationService;
 
 	@Autowired
 	public EducationController(EducationService educationService) {
+		super();
 		this.educationService = educationService;
 	}
 
-	@GetMapping
-	public List<Education> getEducation() {
-		return educationService.getEducation();
+	// TABLE
+	@GetMapping("/education")
+	public String listSkills(Model model) {
+		model.addAttribute("listEducation", educationService.getEducation());
+		return "education";
 	}
 
 }

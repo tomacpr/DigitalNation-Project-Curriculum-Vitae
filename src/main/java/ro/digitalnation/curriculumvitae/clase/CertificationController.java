@@ -1,22 +1,59 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.time.LocalDate;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping(path = "/certification")
+@Controller
 public class CertificationController {
 
 	private final CertificationService certificationService;
 
 	@Autowired
 	public CertificationController(CertificationService certificationService) {
+		super();
 		this.certificationService = certificationService;
 	}
+	
+	// TABLE
+		@GetMapping("/certification")
+		public String listCertification(Model model) {
+			model.addAttribute("listCertifications", certificationService.getCertification());
+			return "certification";
+		}
+		
+		// ADD TEMPLATE
+		@GetMapping("/certification/new")
+		public String createCertificationForm(Model model) {
+			Certification newCertification = new Certification();
+			model.addAttribute("newCertification", newCertification);
+			return "addCertification";
+		}
 
-	@GetMapping
+		// ADD
+		@PostMapping("/certification/add")
+		public String registerNewCertification(@ModelAttribute("addCertification") Certification addCertification) {
+			certificationService.addNewCertification(addCertification);
+			return "redirect:/certification";
+		}
+
+		// UPDATE
+		@GetMapping("/certification/update/{id}")
+		public String updateCertification(@PathVariable(value = "id") long id, Model model) {
+			Certification showCertification = certificationService.getCertificationById(id);
+			model.addAttribute("updateCertification", showCertification);
+			return "updateCertification";
+		}
+
+		// DELETE
+		@GetMapping("/certification/delete/{id}")
+		public String deleteCertificationFromTable(@PathVariable("id") Long certificationId) {
+			certificationService.deleteCertification(certificationId);
+			return "redirect:/certification";
+		}
+
+	/*@GetMapping
 	public List<Certification> getCertification() {
 		return certificationService.getCertification();
 	}
@@ -36,6 +73,6 @@ public class CertificationController {
 			@RequestParam(required = false) String competence, @RequestParam(required = false) String organization,
 			@RequestParam(required = false) LocalDate attainedDate) {
 		certificationService.updateCertification(certificationId, competence, organization, attainedDate);
-	}
+	}*/
 
 }

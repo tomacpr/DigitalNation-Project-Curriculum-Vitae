@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Proiect Individual - Home</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet" />
+</head>
+<body>
+	<div class="header">
+		<div class="subheader">
+			<h1>Digital Nation - JAVA - proiect individual</h1>
+			<div id="navigation">
+				<div id="nav">
+					<ul>
+						<li class="fleft active"><a th:href="@{home}">Home</a></li>
+						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
+						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
+						<li class="fleft"><a th:href="@{education}">Education</a></li>
+						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
+						<li class="fleft"><a th:href="@{skills}">Skills</a></li>
+						<li class="fleft"><a th:href="@{certification}">Certification</a></li>
+						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
+						<li class="fleft"><a th:href="@{profile}">Profile</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="container">
+		<div id="maincolumn">
+			<div style="float: right;">
+				<div class="hoblock">
+					<div class="oblock-header">
+						<h4>Spring Boot Project</h4>
+					</div>
+					<div class="clearfix"></div>
+					<div class="oblock-content">
+						<div class="oblock-innercontent">
+							<div class="colhead" style="padding: 10px;">
+								<b><font color="red">[How it works!]</font><br><br>
+									Tabelul de mai jos ne arata ce putem face pe fiecare pagina:<br> <br>
+									<table >
+									<thead >
+										<tr>
+											<th>Pagini</th>
+											<th><font color="white">INFO</font></th>
+											<th><font color="white">HardCode</font><font color="red">**</font></th>
+											<th><font color="white">H2 Database</font></th>
+											<th><font color="green">GET</font></th>
+											<th><font color="orange">POST</font></th>
+											<th><font color="#005EFF">PUT</font></th>
+											<th><font color="red">DEL</font></th>
+										</tr>
+									</thead>
+			
+									<tbody>
+										<tr>
+											<td>Home</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+										</tr>
+										<tr>
+											<td>Curriculum Vitae<font color="red">*</font></td>
+											<td align=center></td>
+											<td align=center>X</td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+										</tr>
+										<tr>
+											<td>Personal Info</td>
+											<td align=center></td>
+											<td align=center>X - var I</td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+										</tr>
+										<tr>
+											<td>Education</td>
+											<td align=center></td>
+											<td align=center>X - var I</td>
+											<td align=center>X</td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+										</tr>
+										<tr>
+											<td>Experience</td>
+											<td align=center></td>
+											<td align=center>X - var II</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+										</tr>
+										<tr>
+											<td>Skills</td>
+											<td align=center></td>
+											<td align=center>X - var II</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+										</tr>
+										<tr>
+											<td>Certification</td>
+											<td align=center></td>
+											<td align=center>X - var III</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center></td>
+											<td align=center>X</td>
+										</tr>
+										<tr>
+											<td>Hobbies</td>
+											<td align=center></td>
+											<td align=center>X - var II</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center>X</td>
+											<td align=center></td>
+											<td align=center>X</td>
+										</tr>
+										<tr>
+											<td>Profile</td>
+											<td align=center></td>
+											<td align=center>X - var I</td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+											<td align=center></td>
+										</tr>
+									</tbody>
+								</table><br>
+								<div><font color="red">* </font> Vreau sa isi traga informatiile de pe celelalte pagini fara posibilitatea de a modifica ceva | actiunile se vor face doar pe celelalte pagini</div>
+								<div><font color="red">**</font> Diferite variante de HardCod</div><br>
+								<div><font color="green">TODO:</font> <br> - de adaugat pagina de login si inregistrare utilizatori
+								<br> - de finalizat pagina Curriculum Vitae (informatiile sa le traga automat din celelalte pagini)</div>
+							</div>
+						</div>
+					</div>
+					<div class="oblock-bottom"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="footer">
+		<div id="footerInner">
+			<div class="boxFooter">
+				<h2>&nbsp;&nbsp;Toma Ciprian</h2>
+				<ul>
+					<span style="position: relative; bottom: 8px;"><a href=""
+						title="Home">December 2021</a></span>
+				</ul>
+			</div>
+
+			<div style="float: right;">
+				<font class="small"><b><a href="#top" class="gototop"
+						title="Go To Top">To Top</a></font></b>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

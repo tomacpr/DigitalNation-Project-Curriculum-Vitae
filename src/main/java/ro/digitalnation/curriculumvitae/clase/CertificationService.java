@@ -1,52 +1,66 @@
 package ro.digitalnation.curriculumvitae.clase;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CertificationService {
+public class CertificationService implements CertificationServ {
 
 	private final CertificationRepository certificationRepository;
 
 	@Autowired
 	public CertificationService(CertificationRepository certificationRepository) {
+		super();
 		this.certificationRepository = certificationRepository;
 	}
 
 	public List<Certification> getCertification() {
 		return certificationRepository.findAll();
 	}
-
-	/*
-	 * public void addNewCertification(Certification certification) {
-	 * System.out.println(certification); }
-	 */
-
-	public void addNewCertification(Certification certification) {
-		Optional<Certification> certificationOptional = certificationRepository
-				.findCertificationByOrganization(certification.getOrganization());
+	
+	public void addNewCertification(Certification addCertification) {
+		System.out.println("Added new certification " + addCertification + " !");
+		Optional<Certification> certificationOptional = certificationRepository.findCertificationByCompetence(addCertification.getCompetence());
 		if (certificationOptional.isPresent()) {
-			throw new IllegalStateException("organization exist");
+			throw new IllegalStateException("Certification already exist !");
 		}
-		certificationRepository.save(certification);
+		certificationRepository.save(addCertification);
 	}
-
+	
 	public void deleteCertification(Long certificationId) {
 		boolean exists = certificationRepository.existsById(certificationId);
 		if (!exists) {
-			throw new IllegalStateException("certification with id " + certificationId + " does not exists");
+			throw new IllegalStateException("Certification with id " + certificationId + " does not exists !");
 		}
 		certificationRepository.deleteById(certificationId);
 	}
+	
+	public Optional<Certification> getCertificationsById(Long id) {
+		boolean exists = certificationRepository.existsById(id);
+		if (!exists) {
+			throw new IllegalStateException("Certification with id " + id + " does not exists !");
+		}
+		return certificationRepository.findById(id);
+	}
 
-	@Transactional
+	@Override
+	public Certification getCertificationById(long id) {
+		Optional<Certification> optional = certificationRepository.findById(id);
+		Certification certification = null;
+		if (optional.isPresent()) {
+			certification = optional.get();
+		} else {
+			throw new RuntimeException("Certification not found for id : " + id);
+		}
+		return certification;
+	}
+
+	//RestController
+	/*@Transactional
 	public void updateCertification(Long certificationId, String competence, String organization,
 			LocalDate attainedDate) {
 		Certification certification = certificationRepository.findById(certificationId).orElseThrow(
@@ -68,5 +82,5 @@ public class CertificationService {
 				&& !Objects.equals(certification.getAttainedDate(), attainedDate)) {
 			certification.setAttainedDate(null);
 		}
-	}
+	}*/
 }

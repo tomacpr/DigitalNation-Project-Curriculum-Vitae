@@ -11,8 +11,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity(name = "Experience")
-@Table
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name = "Experience")
 public class Experience {
 
 	@Id
@@ -30,9 +32,11 @@ public class Experience {
 	@Column(name = "Job_Description", updatable = false)
 	public String description;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Date_From", updatable = false)
 	public LocalDate dateFrom;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "Date_To", updatable = false)
 	public LocalDate dateTo;
 
@@ -78,8 +82,8 @@ public class Experience {
 		return dateFrom;
 	}
 
-	public void setDateFrom(LocalDate dateFrom) {
-		this.dateFrom = dateFrom;
+	public void setDateFrom(LocalDate date) {
+		this.dateFrom = date;
 	}
 
 	public LocalDate getDateTo() {
@@ -109,7 +113,7 @@ public class Experience {
 
 	@Override
 	public String toString() {
-		return "Experience [id=" + id + ", position=" + position + ", comapany=" + company + ", dateFrom=" + dateFrom
+		return "[position=" + position + ", comapany=" + company + ", dateFrom=" + dateFrom
 				+ ", dateTo=" + dateTo + ", description=" + description + "]";
 	}
 

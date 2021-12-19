@@ -14,6 +14,7 @@ public class EducationService {
 
 	@Autowired
 	public EducationService(EducationRepository educationRepository) {
+		super();
 		this.educationRepository = educationRepository;
 	}
 

@@ -2,15 +2,41 @@ package ro.digitalnation.curriculumvitae.clase;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name = "PersonalInfo")
 public class PersonalInfo {
 
+	@Id
+	@Column(name = "firstName", updatable = false)
 	public String firstName;
+	
+	@Column(name = "lastName", nullable = false)
 	public String lastName;
+	
+	@Column(name = "profession", nullable = false)
 	public String profession;
+	
+	@Column(name = "address", nullable = false)
 	public String address;
+	
+	@Column(name = "phone", nullable = false)
 	public int phone;
+	
+	@Column(name = "mail", nullable = false)
 	public String mail;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "dateOfBirth", nullable = false)
 	public LocalDate dateOfBirth;
+	
+	@Column(name = "linkedIn", nullable = false)
 	public String linkedIn;
 
 	public PersonalInfo() {
