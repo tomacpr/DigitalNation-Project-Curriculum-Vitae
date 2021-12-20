@@ -32,16 +32,15 @@
 		<div id="maincolumn">
 			<div style="float: right;">
 				<div class="oblock">
-					<div class="oblock-header"><h4>Profile</h4></div>
+					<div class="oblock-header"><h4>Skills List</h4></div>
 					<div class="clearfix"></div>
 						<div class="oblock-content">
-						<div class="oblock-innercontent">
-							<div class="colhead" style="padding: 10px;">
-							<b><font color="red"><a>[Update]</font></b>
-							<br>
-							<div><font th:text="*{profile}"></font></div>
+							<div class="oblock-innercontent">
+								<div class="colhead" style="padding: 10px;" th:each="pro :${profile}">
+									<a th:href="@{/profile/update/{id}(id=${pro.id})}" class="update">Update</a><br>
+									<font th:text="${pro.profile}"></font>
+								</div>
 							</div>
-						</div>
 						</div>
 					<div class="oblock-bottom"></div>
 				</div>

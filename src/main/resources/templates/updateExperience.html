@@ -10,21 +10,6 @@
 	<div class="header">
 		<div class="subheader">
 			<h1>Digital Nation - JAVA - proiect individual</h1>
-			<div id="navigation">
-				<div id="nav">
-					<ul>
-						<li class="fleft"><a th:href="@{home}">Home</a></li>
-						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
-						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
-						<li class="fleft"><a th:href="@{education}">Education</a></li>
-						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
-						<li class="fleft active"><a th:href="@{/skills}">Skills</a></li>
-						<li class="fleft"><a th:href="@{certification}">Certification</a></li>
-						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
-						<li class="fleft"><a th:href="@{profile}">Profile</a></li>
-					</ul>
-				</div>
-			</div>
 		</div>
 	</div>
 	
@@ -36,7 +21,7 @@
 				<div class="fblock-content">
 				<div class="fblock-innercontent">
 				<div class="colhead" style="padding: 10px;">
-					<form th:action="@{/experience/add}" th:object = "${updateExperience}" method="POST">
+					<form th:action="@{/experience/upd}" th:object = "${updateExperience}" method="POST">
 						<div class ="form-group">
 							<input type="hidden" th:field="*{id}" />
 							<label> Position: </label><br>
@@ -49,12 +34,14 @@
 							<input type="date" th:field="*{dateTo}" >
 							<label> Job description: </label><br>
 							<textarea required th:field="*{description}" rows="5"></textarea>
-						</div>			
+						</div>
+						<div class = "box-footer">
+										<a th:href="@{/experience}" class="ar"> Back to Experiences List</a>
+						</div>		
 						<div class = "box-footer">
 							<button type="submit" class="sbtn">Update</button>
 						</div>
 					</form>
-						<a th:href="@{/experience}" class="ar"> Back to Experiences List</a>
 				</div>
 				</div>
 				</div>

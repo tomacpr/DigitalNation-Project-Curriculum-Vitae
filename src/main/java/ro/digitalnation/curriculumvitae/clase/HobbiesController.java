@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HobbiesController {
 
-	private HobbiesService hobbiesService;
+	private final HobbiesService hobbiesService;
 
 	@Autowired
 	public HobbiesController(HobbiesService hobbiesService) {

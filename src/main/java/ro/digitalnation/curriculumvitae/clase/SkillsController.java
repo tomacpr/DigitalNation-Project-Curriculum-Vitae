@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 @Controller
 public class SkillsController {
 
@@ -48,14 +47,21 @@ public class SkillsController {
 		skillsService.addNewSkills(addSkill);
 		return "redirect:/skills";
 	}
-
-	// UPDATE
+	
+	// UPDATE TEMPLATE
 	@GetMapping("/skills/update/{id}")
 	public String updateSkill(@PathVariable(value = "id") long id, Model model) {
 		Skills showSkill = skillsService.getSkillById(id);
 		model.addAttribute("updateSkill", showSkill);
 		return "updateSkill";
 	}
+	
+	// UPDATE
+		@PostMapping("/skills/upd")
+		public String updSkills(@ModelAttribute("updSkill") Skills updSkill) {
+			skillsService.updSkills(updSkill);
+			return "redirect:/skills";
+		}
 
 	// DELETE
 	@GetMapping("/skills/delete/{id}")

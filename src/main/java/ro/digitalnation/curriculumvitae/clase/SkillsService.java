@@ -28,6 +28,11 @@ public class SkillsService implements SkillsServ {
 		}
 		skillsRepository.save(addSkills);
 	}
+	
+	public void updSkills(Skills updateSkills) {
+		System.out.println("Updated skill " + updateSkills + " !");
+		skillsRepository.save(updateSkills);
+	}
 
 	public void deleteSkills(Long skillsId) {
 		System.out.println("Deleted skill with id number " + skillsId + " !");

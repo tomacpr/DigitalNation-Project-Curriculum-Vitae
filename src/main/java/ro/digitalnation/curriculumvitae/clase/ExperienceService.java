@@ -58,6 +58,11 @@ public class ExperienceService implements ExperienceServ {
 		}
 		return experience;
 	}
+
+	public void updExperience(Experience updateExperience) {
+		System.out.println("Update experince " + updateExperience + " !");
+		experienceRepository.save(updateExperience);
+	}
 	
 
 	/*@Transactional

@@ -10,21 +10,6 @@
 	<div class="header">
 		<div class="subheader">
 			<h1>Digital Nation - JAVA - proiect individual</h1>
-			<div id="navigation">
-				<div id="nav">
-					<ul>
-						<li class="fleft"><a th:href="@{home}">Home</a></li>
-						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
-						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
-						<li class="fleft"><a th:href="@{education}">Education</a></li>
-						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
-						<li class="fleft"><a th:href="@{skills}">Skills</a></li>
-						<li class="fleft"><a th:href="@{certification}">Certification</a></li>
-						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
-						<li class="fleft active"><a th:href="@{profile}">Profile</a></li>
-					</ul>
-				</div>
-			</div>
 		</div>
 	</div>
 	
@@ -33,21 +18,24 @@
 			<div class="fblock">
 				<div class="fblock-header"><h4>Update Profile</h4></div>
 				<div class="clearfix"></div>
-				<div class="fblock-content">
-				<div class="fblock-innercontent">
-				<div class="colhead" style="padding: 10px;">
-					<form th:action="@{/profile/add}" th:object = "${updateProfile}" method="POST">
-						<div class ="form-group">
-							<textarea required th:field="*{profile}" rows="10"></textarea>
+					<div class="fblock-content">
+						<div class="fblock-innercontent">
+							<div class="colhead" style="padding: 10px;">
+								<form th:action="@{/profile/upd}" th:object = "${updateProfile}" method="POST">
+									<div class ="form-group">
+										<input type="hidden" th:field="*{id}" />
+										<textarea required th:field="*{profile}" rows="10"></textarea>
+									</div>
+									<div class = "box-footer">
+										<a th:href="@{/profile}" class="ar"> Back to Profile</a>
+									</div>
+									<div class = "box-footer">
+										<button type="submit" class="sbtn">Update</button>
+									</div>
+								</form>
+							</div>
 						</div>
-						<div class = "box-footer">
-							<button type="submit" class="sbtn">Update</button>
-						</div>
-					</form>
-						<a th:href="@{/profile}" class="ar"> Back to Profile</a>
-				</div>
-				</div>
-				</div>
+					</div>
 				<div class="fblock-bottom"></div>
 			</div>
 		</div>

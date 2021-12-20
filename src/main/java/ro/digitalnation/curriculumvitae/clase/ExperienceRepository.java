@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ExperienceRepository extends JpaRepository<Experience, Long> {
 	
-	@Query("SELECT s FROM Skills s WHERE s.skill = ?1")
+	//@Query("SELECT s FROM Experience s WHERE s.position = ?1")
 	Optional<Experience> findExperienceByPosition(String position);
 
 }

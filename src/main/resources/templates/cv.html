@@ -30,9 +30,9 @@
 
 	<div id="container">
 		<div id="maincolumn">
-			<div style="float: right;">
+			<div style="float: right;" th:each="info :${listPinfo}">
 				<h1 style="color: orange; padding-top: 8px;">TOMA CIPRIAN IONUT</h1>
-				<h3 style="color: orange;">Junior Java Developer</h3>
+				<h3 style="color: orange;" th:text="${info.profession}">Junior Java Developer</h3>
 				<div class="nblock">
 					<div class="nblock-header">
 					<h4>Education</h4></div>
@@ -40,7 +40,7 @@
 					<div class="nblock-content">
 						<div class="nblock-innercontent">
 						<div class="colhead" style="padding: 10px;">
-							<table >
+							<table width="500">
 									<thead >
 										<tr>
 											<th>Date From</th>
@@ -48,27 +48,11 @@
 											<th>Description</th>
 										</tr>
 									</thead>
-			
 									<tbody>
-										<tr >
-											<td >2012-10-01</td>
-											<td >Transilvania University</td>
-											<td >Design de produs si mediu</td>
-										</tr>
-										<tr >
-											<td >2007-09-01</td>
-											<td >Brancoveanu High School</td>
-											<td >Matematica-Informatica</td>
-										</tr>
-										<tr >
-											<td >2003-09-15</td>
-											<td >Nr. 13 School Brasov</td>
-											<td >V - VIII</td>
-										</tr>
-										<tr >
-											<td >1999-09-15</td>
-											<td >Nr. 13 School Brasov</td>
-											<td >I - IV</td>
+										<tr th:each="education :${listEducation}">
+											<td th:text="${education.dateFrom}"></td>
+											<td th:text="${education.schoolName}"></td>
+											<td th:text="${education.description}"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -84,91 +68,32 @@
 					<div class="clearfix"></div>
 					<div class="nblock-content">
 						<div class="nblock-innercontent">
-						<div class="colhead" style="padding: 10px;">
-								<table  width="640">
+							<div class="colhead" style="padding: 10px;">
+								<table >
+									<thead >
 										<tr>
-											<th rowspan="3" style="width:2%">1</th>
-											<th class="a">Internship program</th>
-											<td align="right">01-08-2015 01-10-2015 | 0 year and 2 months</td>
+											<th style="width:2%"> No. </th>
+											<th > Position </th>
+											<th > Company </th>
+											<th style="width:35%"> Description </th>
+											<th> Date From</th>
+											<th> Date To</th>
+											<th style="width:10%"> Period</th>
 										</tr>
-										<tr>
-											<td class="b">Schaeffler Romania, Brasov</td>
-											<td align="right"></td>
+									</thead>
+									<tbody>
+										<tr th:each="experience :${listExperience}">
+											<td th:text="${experience.id}"></td>
+											<td th:text="${experience.position}"></td>
+											<td th:text="${experience.company}"></td>
+											<td th:text="${experience.description}"></td>
+											<td th:text="${experience.dateFrom}"></td>
+											<td th:text="${experience.dateTo}"></td>
+											<td th:text="${experience.time}"></td>
 										</tr>
-										<tr><td colspan="2" text = "company">Completing all tasks set by the Supervisor and assisting wherever possible. Observing existing strategies and techniques and offering suggestions for improvement. Conducting research and collating data.</td>
-										</tr>
-								</table><br><br>
-								<table  width="640">
-										<tr>
-											<th rowspan="3" style="width:2%">2</th>
-											<th class="a">Continuous Improvement Engineer</th>
-											<td align="right">01-10-2015 01-08-2018 | 2 year and 10 months</td>
-										</tr>
-										<tr>
-											<td class="b">Schaeffler Romania, Brasov</td>
-											<td align="right"></td>
-										</tr>
-										<tr>
-											<td colspan="2" text = "company">Tasked with investigating, sourcing, and developing solutins to issues throughout the factory. Leading site operations that contribute towards improving manufacturing efficiencies by utilizing lean manufacturing and continuous improvement techniques.</td>
-										</tr>
-								</table><br><br>
-								<table  width="640">
-										<tr>
-											<th rowspan="3" style="width:2%">3</th>
-											<th class="a">Trainer LEAN Academy</th>
-											<td align="right">01-08-2018 01-05-2019 | 0 year and 9 months</td>
-										</tr>
-										<tr>
-											<td class="b">Schaeffler Romania, Brasov</td>
-											<td align="right"></td>
-										</tr>
-										<tr>
-											<td colspan="2" text = "company">Trained other people on the plant to understand lean principles and to apply them in production.</td>
-										</tr>
-								</table><br><br>
-								<table  width="640">
-										<tr>
-											<th rowspan="3" style="width:2%">4</th>
-											<th class="a">LEAN Specialist</th>
-											<td align="right">01-05-2019 present | 2 year and 7 months</td>
-										</tr>
-										<tr>
-											<td class="b">Schaeffler Romania, Brasov</td>
-											<td align="right"></td>
-										</tr>
-										<tr>
-											<td colspan="2" text = "company">I ensure the understanding and acceptance of the Lean culture and the implementation methods among the staff within the company. Promote a performnce mindset at all site levels trough Lean events, standardization, and simplifiaction initiative. Provide Lean training at all levels of the Plant.</td>
-										</tr>
-								</table><br><br>
-								<table  width="640">
-										<tr>
-											<th rowspan="3" style="width:2%">5</th>
-											<th class="a">Programming course - Java Development</th>
-											<td align="right">04-12-2019 21-01-2021 | 1 year and 1 months</td>
-										</tr>
-										<tr>
-											<td class="b">Link Academy Romania</td>
-											<td align="right"></td>
-										</tr>
-										<tr>
-											<td colspan="2" text = "company">The course had 10 modules. I started by learning the first two modules Core & Advanced Java Programming, participating in online courses, doing exercices given by the teacher. Also, I have learned programming HTML with JS and CSS3 & MySQL Management.</td>
-										</tr>
-								</table><br><br>
-								<table  width="640">
-										<tr>
-											<th rowspan="3" style="width:2%">3</th>
-											<th class="a">Generatia Tech Explorer - Java Track</th>
-											<td align="right">01-09-2021 20-12-2021 | 0 year and 4 months</td>
-										</tr>
-										<tr>
-											<td class="b">Digital Nation</td>
-											<td align="right"></td>
-										</tr>
-										<tr>
-											<td colspan="2" text = "company">The course ...</td>
-										</tr>
+									</tbody>
 								</table>
-						</div>
+							</div>
 						</div>
 					</div>
 					<div class="nblock-bottom"></div>
@@ -181,7 +106,23 @@
 					<div class="nblock-content">
 						<div class="nblock-innercontent">
 						<div class="colhead" style="padding: 10px;">
-							Java, HTML, CSS, Spring Boot Framework, Git & GitHub, H2  Database
+							<table width="640">
+									<thead >
+										<tr>
+											<th style="width:2%">No.</th>
+											<th style="width:25%">Skill</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+			
+									<tbody>
+										<tr th:each="skills :${listSkills}">
+											<td th:text="${skills.id}"></td>
+											<td th:text="${skills.skill}"></td>
+											<td th:text="${skills.description}"></td>
+										</tr>
+									</tbody>
+								</table>
 						</div>
 						</div>
 					</div>
@@ -195,40 +136,21 @@
 					<div class="nblock-content">
 						<div class="nblock-innercontent">
 						<div class="colhead" style="padding: 10px;">
-							<table >
+							<table width="600">
 									<thead >
 										<tr>
-											<th> No. </th>
-											<th> Certificate </th>
-											<th> Organization </th>
-											<th> Attained</th>
+											<th style="width:2%"> No. </th>
+											<th > Certificate </th>
+											<th > Organization </th>
+											<th style="width:15%"> Attained</th>
 										</tr>
 									</thead>
-			
-									<tbody>
-										<tr >
-											<td >1</td>
-											<td >Train The Trainer</td>
-											<td >Dale Carnagie</td>
-											<td >2016-11-12</td>
-										</tr>
-										<tr >
-											<td >2</td>
-											<td >Individual Situational Leadership</td>
-											<td >Blanchard International</td>
-											<td >2018-05-14</td>
-										</tr>
-										<tr >
-											<td >3</td>
-											<td >Personal Leadership</td>
-											<td >Dale Carnagie</td>
-											<td >2018-09-22</td>
-										</tr>
-										<tr >
-											<td >4</td>
-											<td >Java Development</td>
-											<td >LinkAcademy</td>
-											<td >2021-01-21</td>
+									<tbody>				
+										<tr th:each="certification :${listCertifications}">
+											<td th:text="${certification.id}"></td>
+											<td th:text="${certification.competence}"></td>
+											<td th:text="${certification.organization}"></td>
+											<td th:text="${certification.attainedDate}"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -245,7 +167,21 @@
 					<div class="nblock-content">
 						<div class="nblock-innercontent">
 						<div class="colhead" style="padding: 10px;">
-							MTB Trails,  Swimming,  Hiking,  Playing squash, badminton,  learn anything about JAVA
+							<table width="400">
+									<thead >
+										<tr>
+											<th style="width:2%"> No. </th>
+											<th> Hobby </th>
+										</tr>
+									</thead>
+			
+									<tbody>
+										<tr th:each = "hobbies: ${listHobbies}">
+											<td th:text = "${hobbies.id}"></td>
+											<td th:text = "${hobbies.hobby}"></td>
+										</tr>
+									</tbody>
+								</table>
 						</div>
 						</div>
 					</div>
@@ -259,7 +195,8 @@
 						<div class="clearfix"></div>
 						<div class="sblock-content">
 							<div class="sblock-innercontent">
-							<div class="colhead" style="padding: 10px;"><b>Junior Java Developer with main goal being to improve my programming skills and develop as many apps as possible.</font></b></div>
+							<div class="colhead" style="padding: 10px;" >
+							<b><font>Junior Java Developer with main goal being to improve my programming skills and develop as many apps as possible.</font></b></div>
 						</div>
 						</div>
 					<div class="sblock-bottom"></div>
@@ -270,10 +207,10 @@
 						<div class="clearfix"></div>
 						<div class="sblock-content">
 							<div class="sblock-innercontent">
-							<div class="colhead" style="padding: 10px;">
-			<b><font color="orange" size="2px">Birth Date</font><br>10-10-1992</font></b><br><br>
+							<div class="colhead" style="padding: 10px;" th:each="info :${listPinfo}">
+			<b><font color="orange" size="2px">Birth Date<br></font><font th:text="${info.dateOfBirth}"></font></b><br><br>
 			<b><font color="orange" size="2px">Nationality</font><br>Romanian</font></b><br><br>
-			<b><font color="orange" size="2px">Address</font><br>Avantgarden, Brasov</font></b><br><br>
+			<b><font color="orange" size="2px">Address</font><br><font th:text="${info.address}"></font></b><br><br>
 						</div>
 						</div>
 						</div>
@@ -285,10 +222,10 @@
 						<div class="clearfix"></div>
 						<div class="sblock-content">
 							<div class="sblock-innercontent">
-							<div class="colhead" style="padding: 10px;">
-			<b><font color="orange" size="2px">E-mail</font><br>ciprian.toma@digitalexplorer</font></b><br><br>
-			<b><font color="orange" size="2px">Telephone</font><br>0747453555</font></b><br><br>
-			<b><font color="orange" size="2px">LinkedIn</font><br>https://www.linkedin.com/tomacpr</font></b><br><br>
+							<div class="colhead" style="padding: 10px;" th:each="info :${listPinfo}">
+			<b><font color="orange" size="2px">E-mail</font><br><font th:text="${info.mail}">ciprian.toma@digitalexplorer</font></b><br><br>
+			<b><font color="orange" size="2px">Telephone</font><br><font th:text="${info.phone}">0747453555</font></b><br><br>
+			<b><font color="orange" size="2px">LinkedIn</font><br><font th:text="${info.linkedIn}">https://www.linkedin.com/tomacpr</font></b><br><br>
 			<b><font color="orange" size="2px">GitHub</font><br>https://github.com/tomacpr</font></b><br><br>
 						</div>
 						</div>

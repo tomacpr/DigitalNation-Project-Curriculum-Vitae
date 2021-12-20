@@ -18,7 +18,7 @@ public class EducationController {
 
 	// TABLE
 	@GetMapping("/education")
-	public String listSkills(Model model) {
+	public String listEducation(Model model) {
 		model.addAttribute("listEducation", educationService.getEducation());
 		return "education";
 	}

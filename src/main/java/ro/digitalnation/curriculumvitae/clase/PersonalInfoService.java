@@ -19,8 +19,8 @@ public class PersonalInfoService {
 	}
 
 	public List<PersonalInfo> getPersonalInfo() {
-		PersonalInfo pInfo = new PersonalInfo("Toma", "Ciprian", "Inginer", "str Lebedei, Brasov", 0747453555,
-				"ciprian.toma@digitalexplorer.ro", LocalDate.of(1992, Month.OCTOBER, 10), "tomacpr");
+		PersonalInfo pInfo = new PersonalInfo("Toma", "Ciprian Ionut", "Junior Java Developer", "str Lebedei, Brasov", 0747453555,
+				"ciprian.toma@digitalexplorer.ro", LocalDate.of(1992, Month.OCTOBER, 10), "https://www.linkedin.com/tomacpr");
 		return personalInfoRepository.saveAll(List.of(pInfo));
 	}
 }

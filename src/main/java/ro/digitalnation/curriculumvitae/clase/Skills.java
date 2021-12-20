@@ -15,7 +15,7 @@ public class Skills {
 	@Id
 	@SequenceGenerator(name = "skills_sequence", sequenceName = "skills_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "skills_sequence")
-	@Column(name = "Identification", updatable = false)
+	@Column(name = "Identification", updatable = true)
 	private long id;
 
 	@Column(name = "Skills", nullable = false, columnDefinition = "TEXT")

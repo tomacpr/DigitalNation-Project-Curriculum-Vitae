@@ -10,21 +10,6 @@
 	<div class="header">
 		<div class="subheader">
 			<h1>Digital Nation - JAVA - proiect individual</h1>
-			<div id="navigation">
-				<div id="nav">
-					<ul>
-						<li class="fleft"><a th:href="@{home}">Home</a></li>
-						<li class="fleft"><a th:href="@{cv}">CurriculumVitae</a></li>
-						<li class="fleft"><a th:href="@{info}">Personal Info</a></li>
-						<li class="fleft"><a th:href="@{education}">Education</a></li>
-						<li class="fleft"><a th:href="@{experience}">Experience</a></li>
-						<li class="fleft"><a th:href="@{skills}">Skills</a></li>
-						<li class="fleft active"><a th:href="@{certification}">Certification</a></li>
-						<li class="fleft"><a th:href="@{hobbies}">Hobbies</a></li>
-						<li class="fleft"><a th:href="@{profile}">Profile</a></li>
-					</ul>
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -44,6 +29,9 @@
 							<input type="text" th:field="*{organization}" placeholder="...">
 							<label> Attained date: </label>
 							<input type="date" th:field="*{attainedDate}" placeholder="...">
+						</div>
+						<div class = "box-footer">
+								<a th:href="@{/certification}" class="ar"> Back to Certifications List</a>
 						</div>
 						<div class = "box-footer">
 							<button type="submit" class = "sbtn"> Add Certificate </button>

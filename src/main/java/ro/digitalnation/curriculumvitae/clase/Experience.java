@@ -20,24 +20,24 @@ public class Experience {
 	@Id
 	@SequenceGenerator(name = "experience_sequence", sequenceName = "experience_sequence", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "experience_sequence")
-	@Column(name = "Identification", updatable = false)
+	@Column(name = "Identification", updatable = true)
 	public Long id;
 
-	@Column(name = "Position", updatable = false)
+	@Column(name = "Position", nullable = false)
 	public String position;
 
-	@Column(name = "Company", updatable = false)
+	@Column(name = "Company", nullable = false)
 	public String company;
 
-	@Column(name = "Job_Description", updatable = false)
+	@Column(name = "Job_Description", nullable = false)
 	public String description;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "Date_From", updatable = false)
+	@Column(name = "Date_From", nullable = false)
 	public LocalDate dateFrom;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "Date_To", updatable = false)
+	@Column(name = "Date_To", nullable = false)
 	public LocalDate dateTo;
 
 	@Transient
